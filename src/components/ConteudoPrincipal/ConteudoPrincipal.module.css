@@ -1,0 +1,11 @@
+.container {
+    display: flex; /*Ativa Caixa Flexível*/
+    flex-direction: row; /*Define que a caixa flexível será uma linha */
+    flex-wrap: wrap; /*Define que ela quebrará pra baixo caso não tenha espaço na tela */
+    width: 100%; /*Define a largura */
+    padding: 4px; /*Define a "margem interna" do componente */
+    border: 1px solid red; /*Define que a borda terá um píxel, será sólido e terá cor vermelha */
+    border-radius: 4px;
+    align-items: center;
+    justify-content: center;
+}
