@@ -12,10 +12,10 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <CarrinhoProvider>
+    <CarrinhoProvider>
         <Header />
         <AppRoutes />
-      </CarrinhoProvider>
+    </CarrinhoProvider>
     </BrowserRouter>
   </React.StrictMode>,
 );

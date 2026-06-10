@@ -1,6 +1,6 @@
 import { useParams } from "react-router";
 import { produtos } from "../../data/produtos.js";
-import { useCarrinho } from "../../context/CarrinhoContext.js";
+import { useCarrinho } from "../../context/CarrinhoContext.jsx";
 
 function Produto() {
 

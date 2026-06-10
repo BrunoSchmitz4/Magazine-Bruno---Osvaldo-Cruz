@@ -2,9 +2,8 @@ import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
 import { useCarrinho } from '../../context/CarrinhoContext';
 
-
 export default function Header() {
-    const { totalItens } = useCarrinho();
+    const {totalItens} = useCarrinho();
 
     return <>
         <header className={styles.header}>
