@@ -1,7 +1,10 @@
 import { useParams } from "react-router";
 import { produtos } from "../../data/produtos.js";
+import { useCarrinho } from "../../context/CarrinhoContext.js";
 
 function Produto() {
+
+    const { adicionarItem } = useCarrinho();
     const { id } = useParams();
 
     const pr = produtos.find((p) => p.id === Number(id));
@@ -18,7 +21,7 @@ function Produto() {
             <p>Preço: R$ {pr.preco.toFixed(2)}</p>
             <img src={pr.img} alt={pr.nome} />
             {pr.em_estoque ? 
-                <> <p>Produto disponível</p> </>
+                <> <button onClick={() => adicionarItem(pr)}>Adicionar ao Carrinho</button> </>
                 :
                 <> <p>Produto indisponível</p> </>
             }
