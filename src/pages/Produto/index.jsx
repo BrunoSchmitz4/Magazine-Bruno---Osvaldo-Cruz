@@ -1,15 +1,28 @@
 import { useParams } from "react-router";
+import { produtos } from "../../data/produtos.js";
 
 function Produto() {
     const { id } = useParams();
 
+    const pr = produtos.find((p) => p.id === Number(id));
+
+    if (!pr) {
+        return (
+            <p>Opa! Esse produto parece inexistente ou foi removido.</p>
+        )
+    }
     return (
-        <>
-            <h2>
-                Descrição do produto de id:
-                {id}
-            </h2>
-        </>
+        <section>
+            <h2>{pr.nome}</h2>
+            <p>{pr.descricao}</p>
+            <p>Preço: R$ {pr.preco.toFixed(2)}</p>
+            <img src={pr.img} alt={pr.nome} />
+            {pr.em_estoque ? 
+                <> <p>Produto disponível</p> </>
+                :
+                <> <p>Produto indisponível</p> </>
+            }
+        </section>
     )
 }
 

@@ -11,14 +11,15 @@ function ConteudoPrincipal() {
       <div className={style.container}>
         {lista_produtos.map((produto) => (
           <>
-            <Card
-              key={produto.id}
-              title={produto.nome}
-              price={produto.preco}
-              desc={produto.em_estoque}
-              img={produto.img}
-            />
-            <Link to={`/Catalogo/${produto.id}`}>Ver detalhes</Link>
+            <Link className={style.cardLink} to={`/Catalogo/${produto.id}`}>
+              <Card
+                key={produto.id}
+                title={produto.nome}
+                price={produto.preco}
+                desc={produto.em_estoque}
+                img={produto.img}
+              />
+            </Link>
           </>
         ))}
       </div>

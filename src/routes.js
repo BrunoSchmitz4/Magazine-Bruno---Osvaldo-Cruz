@@ -3,6 +3,7 @@ import CatalogoProdutos from "./pages/CatalogoProdutos";
 import { Route, Routes } from "react-router";
 import NotFound from "./pages/NotFound";
 import Produto from "./pages/Produto";
+import Carrinho from "./pages/Carrinho";
 
 function AppRoutes() {
     return (
@@ -22,7 +23,11 @@ function AppRoutes() {
                 <Route 
                     path="/Catalogo/:id"
                     element={<Produto />}
-                    />
+                />
+                <Route
+                    path="/Carrinho"
+                    element={<Carrinho />}
+                />
             </Routes>
     )
 }
