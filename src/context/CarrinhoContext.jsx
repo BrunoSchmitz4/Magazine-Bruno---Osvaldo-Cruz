@@ -47,10 +47,6 @@ export function CarrinhoProvider({ children }) {
     );
   }
 
-  function totalItens() {
-    return itens.reduce((acc, item) => acc + item.quantidade, 0);
-  }
-
   return (
     <CarrinhoContext.Provider
       value={{ itens, adicionarItem, removerItem, totalItens, aumentarQuantidade, diminuirQuantidade }}
