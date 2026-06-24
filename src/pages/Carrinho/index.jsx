@@ -2,7 +2,7 @@ import { useCarrinho } from "../../context/CarrinhoContext";
 import styles from "./Carrinho.module.css";
 
 export default function Carrinho() {
-  const { itens, removerItem } = useCarrinho();
+  const { itens, removerItem, aumentarQuantidade, diminuirQuantidade } = useCarrinho();
 
   if (itens.length === 0) return <p>Seu carrinho está vazio.</p>;
 
@@ -18,6 +18,13 @@ export default function Carrinho() {
           <div key={item.id}>
             <strong>{item.nome}</strong> — {item.quantidade}x — R${" "}
             {(item.preco * item.quantidade).toFixed(2)}
+
+          <div>
+            <button onClick={() => diminuirQuantidade(item.id)}>-</button>
+            <span> {item.quantidade} </span>
+            <button onClick={() => aumentarQuantidade(item.id)}>+</button>
+          </div>
+
             <button onClick={() => removerItem(item.id)}>Remover</button>
           </div>
         ))}

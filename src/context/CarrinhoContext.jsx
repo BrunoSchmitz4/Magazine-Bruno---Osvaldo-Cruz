@@ -12,7 +12,7 @@ export function CarrinhoProvider({ children }) {
         return prev.map((item) =>
           item.id === produto.id
             ? { ...item, quantidade: item.quantidade + 1 }
-            : item
+            : item,
         );
       }
       return [...prev, { ...produto, quantidade: 1 }];
@@ -27,8 +27,34 @@ export function CarrinhoProvider({ children }) {
     return itens.reduce((acc, item) => acc + item.quantidade, 0);
   }
 
+  function diminuirQuantidade(id) {
+    setItens((prev) =>
+      prev
+        .map((item) =>
+          item.id === id ? { ...item, quantidade: item.quantidade - 1 } : item,
+        )
+        .filter((item) => item.quantidade > 0),
+    );
+  }
+
+  function aumentarQuantidade(id) {
+    setItens((prev) =>
+      prev.map((item) =>
+        item.id === id
+          ? { ...item, quantidade: item.quantidade + 1 }
+          : item
+      )
+    );
+  }
+
+  function totalItens() {
+    return itens.reduce((acc, item) => acc + item.quantidade, 0);
+  }
+
   return (
-    <CarrinhoContext.Provider value={{ itens, adicionarItem, removerItem, totalItens }}>
+    <CarrinhoContext.Provider
+      value={{ itens, adicionarItem, removerItem, totalItens, aumentarQuantidade, diminuirQuantidade }}
+    >
       {children}
     </CarrinhoContext.Provider>
   );
