@@ -23,10 +23,6 @@ export function CarrinhoProvider({ children }) {
     setItens((prev) => prev.filter((item) => item.id !== id));
   }
 
-  function removerItem(id) {
-    setItens((prev) => prev.filter((item) => item.id !== id));
-  }
-
   function totalItens() {
     return itens.reduce((acc, item) => acc + item.quantidade, 0);
   }
