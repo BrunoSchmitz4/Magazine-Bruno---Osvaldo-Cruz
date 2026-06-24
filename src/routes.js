@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router";
 import NotFound from "./pages/NotFound";
 import Produto from "./pages/Produto";
 import Carrinho from "./pages/Carrinho";
+import Pedidos from "./pages/Pedidos";
 
 function AppRoutes() {
     return (
@@ -27,6 +28,10 @@ function AppRoutes() {
                 <Route
                     path="/Carrinho"
                     element={<Carrinho />}
+                />
+                <Route
+                    path="/Pedidos"
+                    element={<Pedidos />}
                 />
             </Routes>
     )

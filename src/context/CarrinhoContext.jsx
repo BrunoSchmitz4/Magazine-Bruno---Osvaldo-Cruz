@@ -4,6 +4,7 @@ const CarrinhoContext = createContext();
 
 export function CarrinhoProvider({ children }) {
   const [itens, setItens] = useState([]);
+  const [pedidos, setPedidos] = useState([]);
 
   function adicionarItem(produto) {
     setItens((prev) => {
@@ -47,9 +48,30 @@ export function CarrinhoProvider({ children }) {
     );
   }
 
+  function valorTotal() {
+    return itens.reduce(
+      (acc, item) => acc + item.preco * item.quantidade,
+      0,
+    );
+  }
+
+  function finalizarCompra() {
+    if (itens.length === 0) return;
+
+    const novoPedido = {
+      id: Date.now(),
+      data: new Date().toLocaleDateString("pt-BR"),
+      itens: itens,
+      total: valorTotal(),
+    };
+
+    setPedidos((prev) => [...prev, novoPedido]);
+    setItens([]);
+  }
+
   return (
     <CarrinhoContext.Provider
-      value={{ itens, adicionarItem, removerItem, totalItens, aumentarQuantidade, diminuirQuantidade }}
+      value={{ itens, pedidos, adicionarItem, removerItem, totalItens, valorTotal, aumentarQuantidade, diminuirQuantidade, finalizarCompra }}
     >
       {children}
     </CarrinhoContext.Provider>

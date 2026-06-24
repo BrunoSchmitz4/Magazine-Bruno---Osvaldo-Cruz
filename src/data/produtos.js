@@ -1,8 +1,43 @@
-export const produtos = [
-    { id: 1, nome: "Mouse Gamer", preco: 12.9, em_estoque: true, img: "" },
-    { id: 2, nome: "Teclado Gamer", preco: 118.9, em_estoque: false, img: "" },
-    { id: 3, nome: "Monitor Gamer", preco: 590.9, em_estoque: true, img: "" },
-    { id: 4, nome: "Teclado Gamer", preco: 118.9, em_estoque: false, img: "" },
-    { id: 5, nome: "Monitor Gamer", preco: 590.9, em_estoque: true, img: "" },    
-    { id: 6, nome: "Teclado Gamer", preco: 118.9, em_estoque: false, img: "" },
-]
+// Lista de produtos da loja.
+// Em vez de digitar 200 produtos na mão, geramos com um laço (for).
+// Tudo é PREVISÍVEL (sem Math.random) para o preço e o estoque
+// não mudarem a cada vez que a página carrega.
+
+// Nomes-base que vamos reaproveitar. O número no final do nome
+// deixa cada produto único (ex: "Mouse Gamer 1", "Mouse Gamer 21"...).
+const nomesBase = [
+  "Mouse Gamer",
+  "Teclado Mecânico",
+  "Monitor Full HD",
+  "Headset",
+  "Webcam",
+  "Notebook",
+  "Smartphone",
+  "Tablet",
+  "Cadeira Gamer",
+  "Mousepad",
+  "Caixa de Som",
+  "Fone Bluetooth",
+  "Carregador Turbo",
+  "SSD 1TB",
+  "Pen Drive 64GB",
+  "Roteador Wi-Fi",
+  "Impressora",
+  "Smart TV",
+  "Controle Sem Fio",
+  "Câmera de Segurança",
+];
+
+export const produtos = [];
+
+for (let i = 0; i < 200; i++) {
+  const base = nomesBase[i % nomesBase.length]; // % faz a lista "dar a volta"
+
+  produtos.push({
+    id: i + 1,
+    nome: `${base} ${i + 1}`,
+    preco: 19.9 + (i % 50) * 10, // varia de R$ 19,90 até R$ 509,90
+    em_estoque: i % 4 !== 0, // 3 a cada 4 produtos ficam em estoque
+    img: "",
+  });
+}

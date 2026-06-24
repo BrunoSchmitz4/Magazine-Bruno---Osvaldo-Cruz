@@ -59,3 +59,29 @@
 .botaoRemover:hover {
     background-color: #b91c1c;
 }
+
+/* Rodapé do carrinho: total à esquerda, botão finalizar à direita */
+.resumo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    max-width: 700px;
+    margin: 24px auto 0;
+    padding-top: 16px;
+    border-top: 2px solid var(--cor-borda);
+}
+
+.total {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.finalizar {
+    background-color: var(--cor-sucesso);
+}
+
+.finalizar:hover {
+    background-color: #15803d;
+}
