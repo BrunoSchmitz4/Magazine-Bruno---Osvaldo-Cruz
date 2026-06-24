@@ -15,17 +15,36 @@ export default function Carrinho() {
       <h2 className={styles.tituloCarrinho}>Seu Carrinho</h2>
       <div className={styles.containerCarrinho}>
         {itens.map((item) => (
-          <div key={item.id}>
-            <strong>{item.nome}</strong> — {item.quantidade}x — R${" "}
-            {(item.preco * item.quantidade).toFixed(2)}
+          <div key={item.id} className={styles.itemCarrinho}>
+            <div className={styles.info}>
+              <strong>{item.nome}</strong>
+              <span className={styles.preco}>
+                R$ {(item.preco * item.quantidade).toFixed(2)}
+              </span>
+            </div>
 
-          <div>
-            <button onClick={() => diminuirQuantidade(item.id)}>-</button>
-            <span> {item.quantidade} </span>
-            <button onClick={() => aumentarQuantidade(item.id)}>+</button>
-          </div>
+            <div className={styles.quantidade}>
+              <button
+                className={styles.botaoQtd}
+                onClick={() => diminuirQuantidade(item.id)}
+              >
+                -
+              </button>
+              <span>{item.quantidade}</span>
+              <button
+                className={styles.botaoQtd}
+                onClick={() => aumentarQuantidade(item.id)}
+              >
+                +
+              </button>
+            </div>
 
-            <button onClick={() => removerItem(item.id)}>Remover</button>
+            <button
+              className={styles.botaoRemover}
+              onClick={() => removerItem(item.id)}
+            >
+              Remover
+            </button>
           </div>
         ))}
       </div>

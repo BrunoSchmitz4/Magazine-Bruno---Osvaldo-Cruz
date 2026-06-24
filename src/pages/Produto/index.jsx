@@ -1,6 +1,7 @@
 import { useParams } from "react-router";
 import { produtos } from "../../data/produtos.js";
 import { useCarrinho } from "../../context/CarrinhoContext.jsx";
+import styles from "./Produto.module.css";
 
 function Produto() {
 
@@ -16,15 +17,19 @@ function Produto() {
     }
     return (
         <section>
-            <h2>{pr.nome}</h2>
-            <p>{pr.descricao}</p>
-            <p>Preço: R$ {pr.preco.toFixed(2)}</p>
-            <img src={pr.img} alt={pr.nome} />
-            {pr.em_estoque ? 
-                <> <button onClick={() => adicionarItem(pr)}>Adicionar ao Carrinho</button> </>
-                :
-                <> <p>Produto indisponível</p> </>
-            }
+            <div className={styles.produto}>
+                <img className={styles.imagem} src={pr.img} alt={pr.nome} />
+                <div className={styles.info}>
+                    <h2 className={styles.nome}>{pr.nome}</h2>
+                    <p>{pr.descricao}</p>
+                    <p className={styles.preco}>R$ {pr.preco.toFixed(2)}</p>
+                    {pr.em_estoque ?
+                        <button onClick={() => adicionarItem(pr)}>Adicionar ao Carrinho</button>
+                        :
+                        <p className={styles.indisponivel}>Produto indisponível</p>
+                    }
+                </div>
+            </div>
         </section>
     )
 }

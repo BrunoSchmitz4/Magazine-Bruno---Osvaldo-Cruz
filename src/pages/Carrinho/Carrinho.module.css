@@ -1,19 +1,61 @@
+.tituloCarrinho {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
 .containerCarrinho {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 1rem;
-    width: 80%;
+    gap: 12px;
+    max-width: 700px;
     margin: 0 auto;
 }
 
+/* Cada item: nome | controles de quantidade | remover.
+   flex-wrap permite que isso reorganize no celular sem quebrar. */
 .itemCarrinho {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
     width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 12px 16px;
+    background-color: var(--cor-branco);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+}
+
+.preco {
+    color: var(--cor-primaria);
+    font-weight: bold;
+}
+
+/* Controles de quantidade (- 1 +) */
+.quantidade {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Botões pequenos e quadrados, sobrescrevendo o botão padrão */
+.botaoQtd {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+.botaoRemover {
+    background-color: var(--cor-perigo);
+}
+
+.botaoRemover:hover {
+    background-color: #b91c1c;
 }

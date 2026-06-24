@@ -1,0 +1,50 @@
+/* Em telas grandes: imagem ao lado das informações (flex-direction: row).
+   No celular, o media query lá embaixo empilha tudo. */
+.produto {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+    background-color: var(--cor-branco);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio);
+    padding: 24px;
+}
+
+.imagem {
+    width: 320px;
+    max-width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: var(--raio);
+    background-color: var(--cor-fundo);
+}
+
+.info {
+    flex: 1;
+}
+
+.nome {
+    margin-top: 0;
+}
+
+.preco {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--cor-primaria);
+}
+
+.indisponivel {
+    color: var(--cor-perigo);
+    font-weight: bold;
+}
+
+/* RESPONSIVO: em telas de até 640px, empilha imagem e texto. */
+@media (max-width: 640px) {
+    .produto {
+        flex-direction: column;
+    }
+
+    .imagem {
+        width: 100%;
+    }
+}

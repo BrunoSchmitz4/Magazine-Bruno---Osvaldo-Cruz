@@ -1,0 +1,15 @@
+.notFound {
+    text-align: center;
+}
+
+.link {
+    display: inline-block;
+    margin-top: 12px;
+    color: var(--cor-primaria);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
