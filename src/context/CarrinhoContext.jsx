@@ -1,9 +1,17 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 const CarrinhoContext = createContext();
 
 export function CarrinhoProvider({ children }) {
-  const [itens, setItens] = useState([]);
+  const [itens, setItens] = useState(() => {
+    const salvo = localStorage.getItem("carrinho");
+    return salvo ? JSON.parse(salvo) : [];
+  });
+  
+  useEffect(() => {
+    localStorage.setItem("carrinho", JSON.stringify(itens));
+  }, [itens]);
+
   const [pedidos, setPedidos] = useState([]);
 
   function adicionarItem(produto) {

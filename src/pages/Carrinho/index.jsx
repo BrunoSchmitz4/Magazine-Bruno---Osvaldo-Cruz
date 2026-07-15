@@ -6,10 +6,6 @@ export default function Carrinho() {
 
   if (itens.length === 0) return <p>Seu carrinho está vazio.</p>;
 
-  // Dicas de Site:
-  // Google Fonts: https://fonts.google.com/
-  // Flaticon: https://www.flaticon.com/
-  // Coolors: https://coolors.co/
   return (
     <section>
       <h2 className={styles.tituloCarrinho}>Seu Carrinho</h2>

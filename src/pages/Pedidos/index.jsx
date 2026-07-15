@@ -4,13 +4,7 @@ import styles from "./Pedidos.module.css";
 export default function Pedidos() {
   const { pedidos } = useCarrinho();
 
-  if (pedidos.length === 0) {
-    return (
-      <section>
-        <p>Você ainda não fez nenhum pedido.</p>
-      </section>
-    );
-  }
+  if (pedidos.length === 0) return <p>Você ainda não fez nenhum pedido.</p>;
 
   return (
     <section>
@@ -28,7 +22,7 @@ export default function Pedidos() {
           <ul className={styles.lista}>
             {pedido.itens.map((item) => (
               <li key={item.id}>
-                {item.nome} — {item.quantidade}x — R${" "}
+                {item.nome} — {item.quantidade}x — R$
                 {(item.preco * item.quantidade).toFixed(2)}
               </li>
             ))}
