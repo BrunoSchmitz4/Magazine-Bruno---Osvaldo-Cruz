@@ -23,8 +23,8 @@ export default function Pedidos() {
                     <ul className={style.lista}>
                         {pedido.itens.map((item) => (
                             <li key={item.id}>
-                                {item.nome} - {item.quantidade}x - R$
-                                {(item.preco * item.quantidade).toFixed}
+                                {item.nome} - {item.quantidade}x - R${" "}
+                                {(item.preco * item.quantidade).toFixed(2)}
                             </li>
                         ))}
                     </ul>

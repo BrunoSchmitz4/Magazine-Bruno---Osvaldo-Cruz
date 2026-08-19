@@ -31,13 +31,13 @@ const nomesBase = [
 export const produtos = [];
 
 for (let i = 0; i < 200; i++) {
-  const base = nomesBase[i % nomesBase.length]; // % faz a lista "dar a volta"
+  const base = nomesBase[i % nomesBase.length];
 
   produtos.push({
     id: i + 1,
     nome: `${base} ${i + 1}`,
-    preco: 19.9 + (i % 50) * 10, // varia de R$ 19,90 até R$ 509,90
-    em_estoque: i % 4 !== 0, // 3 a cada 4 produtos ficam em estoque
-    img: "",
+    preco: 19.9 + (i % 50) * 10,
+    em_estoque: i % 4 !== 0,
+    img: `https://picsum.photos/seed/${i + 1}/400/300`,
   });
 }

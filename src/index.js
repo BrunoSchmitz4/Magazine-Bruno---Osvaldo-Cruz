@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import AppRoutes from "./routes";
 import { BrowserRouter } from "react-router";
 import { CarrinhoProvider } from "./context/CarrinhoContext";
@@ -13,6 +14,7 @@ root.render(
     <CarrinhoProvider>
         <Header />
         <AppRoutes />
+        <Footer />
     </CarrinhoProvider>
     </BrowserRouter>
   </React.StrictMode>,

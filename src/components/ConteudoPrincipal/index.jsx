@@ -16,7 +16,7 @@ function ConteudoPrincipal() {
                 key={produto.id}
                 title={produto.nome}
                 price={produto.preco}
-                desc={produto.em_estoque}
+                desc={produto.descricao}
                 img={produto.img}
               />
             </Link>

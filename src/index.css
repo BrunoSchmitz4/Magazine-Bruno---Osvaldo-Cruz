@@ -57,10 +57,3 @@ button {
 button:hover {
   background-color: var(--cor-primaria-escura);
 }
-
-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: cemter;
-}

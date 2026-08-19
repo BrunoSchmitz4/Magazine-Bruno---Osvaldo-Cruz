@@ -1,0 +1,19 @@
+.footer {
+    background-color: #1f2937;
+    color: var(--cor-branco);
+    text-align: center;
+    padding: 24px 16px;
+    margin-top: 40px;
+}
+
+.marca {
+    margin: 0;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.texto {
+    margin: 4px 0 0;
+    color: #9ca3af;
+    font-size: 0.85rem;
+}
