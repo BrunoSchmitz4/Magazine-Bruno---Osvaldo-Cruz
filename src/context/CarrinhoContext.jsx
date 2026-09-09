@@ -1,4 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
+// As regras de negócio agora moram em src/utils/carrinho.js, fora do React.
+// Aqui ficou só o ESTADO: o que muda na tela.
+import * as regras from "../utils/carrinho";
 
 const CarrinhoContext = createContext();
 
@@ -7,7 +10,7 @@ export function CarrinhoProvider({ children }) {
     const salvo = localStorage.getItem("carrinho");
     return salvo ? JSON.parse(salvo) : [];
   });
-  
+
   useEffect(() => {
     localStorage.setItem("carrinho", JSON.stringify(itens));
   }, [itens]);
@@ -15,52 +18,27 @@ export function CarrinhoProvider({ children }) {
   const [pedidos, setPedidos] = useState([]);
 
   function adicionarItem(produto) {
-    setItens((prev) => {
-      const jaExiste = prev.find((item) => item.id === produto.id);
-      if (jaExiste) {
-        return prev.map((item) =>
-          item.id === produto.id
-            ? { ...item, quantidade: item.quantidade + 1 }
-            : item,
-        );
-      }
-      return [...prev, { ...produto, quantidade: 1 }];
-    });
+    setItens((prev) => regras.adicionarProduto(prev, produto));
   }
 
   function removerItem(id) {
-    setItens((prev) => prev.filter((item) => item.id !== id));
+    setItens((prev) => regras.removerProduto(prev, id));
   }
 
   function totalItens() {
-    return itens.reduce((acc, item) => acc + item.quantidade, 0);
+    return regras.contarItens(itens);
   }
 
   function diminuirQuantidade(id) {
-    setItens((prev) =>
-      prev
-        .map((item) =>
-          item.id === id ? { ...item, quantidade: item.quantidade - 1 } : item,
-        )
-        .filter((item) => item.quantidade > 0),
-    );
+    setItens((prev) => regras.diminuirQuantidade(prev, id));
   }
 
   function aumentarQuantidade(id) {
-    setItens((prev) =>
-      prev.map((item) =>
-        item.id === id
-          ? { ...item, quantidade: item.quantidade + 1 }
-          : item
-      )
-    );
+    setItens((prev) => regras.aumentarQuantidade(prev, id));
   }
 
   function valorTotal() {
-    return itens.reduce(
-      (acc, item) => acc + item.preco * item.quantidade,
-      0,
-    );
+    return regras.calcularTotal(itens);
   }
 
   function finalizarCompra() {
